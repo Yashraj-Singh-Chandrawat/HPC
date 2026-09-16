@@ -31,6 +31,10 @@
 
  int main(){
 
+     struct timespec start, end;
+double time_taken;
+clock_gettime(CLOCK_MONOTONIC, &start);
+
     for(int i=0;i<1000;i++){
         for(int j=0;j<1000;j++){
             arr1[i][j]=j;
@@ -73,6 +77,10 @@
         }
         printf("\n");
      }
- 
+ clock_gettime(CLOCK_MONOTONIC, &end);
+ time_taken = (end.tv_sec - start.tv_sec)
+           + (end.tv_nsec - start.tv_nsec) / 1e9;
+
+   printf("\nTime taken = %f seconds\n", time_taken);
 
  }
